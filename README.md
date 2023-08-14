@@ -62,12 +62,24 @@ Go to the project directory.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## 👤 Author <a name="author"></a>
+## 👤 Authors <a name="author"></a>
 
 👤 **Phelelani Ndlovu**
 
 - GitHub: [@techmoves](https://github.com/techmoves)
 - LinkedIn: [Phelelani Ndlovu](https://linkedin.com/in/phelelani-ndlovu)
+
+👤 **Alex**
+
+- GitHub: [@githubhandle](https://github.com/AleWaweru/)
+- Twitter: [@twitterhandle](https://twitter.com/ngashalex)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/alex-ng-ang-a-waweru-2b2701180/)
+
+👤 **Abdelaziz Soliman**
+
+- GitHub: [@abdelazizsoliman](https://github.com/abdelazizsoliman)
+- Twitter: [@Abdelaz21958317](https://twitter.com/Abdelaz21958317)
+- LinkedIn: [Abdelaziz Soliman](https://www.linkedin.com/in/abdelazizsoliman/)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
