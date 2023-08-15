@@ -1,4 +1,6 @@
 require_relative 'item'
+require_relative 'book'
+require_relative 'label'
 
 class ConsoleApp
   def initialize
@@ -9,15 +11,9 @@ class ConsoleApp
   # rubocop:disable Metrics/CyclomaticComplexity
   # rubocop:disable Metrics/MethodLength
   def main_menu
+    puts 'Welcome to catalog of my Things!'
     loop do
-      puts 'Select an option:'
-      puts '1. Add Item'
-      puts '2. Move Item to Archive'
-      puts '3. Add genre'
-      puts '4. add_source_to_item_menu'
-      puts '5. add_label_to_item_menu'
-      puts '6. add_author_to_item_menu'
-      puts '7. Quit'
+      display_menu_options
 
       choice = gets.chomp.to_i
 
@@ -35,6 +31,12 @@ class ConsoleApp
       when 6
         add_author_to_item_menu
       when 7
+        list_all_books
+      when 8
+        list_all_labels
+      when 9
+        add_book
+      when 10
         puts 'Goodbye!'
         break
       else
@@ -42,7 +44,24 @@ class ConsoleApp
       end
     end
     # rubocop:enable Metrics/MethodLength
-    # rubocop:enable Metrics/CyclomaticComplexity
+  end
+  # rubocop:enable Metrics/CyclomaticComplexity
+
+  private
+
+  def display_menu_options
+    puts 'Select an option:'
+    puts 'Select an option:'
+    puts '1. Add Item'
+    puts '2. Move Item to Archive'
+    puts '3. Add genre'
+    puts '4. add_source_to_item_menu'
+    puts '5. add_label_to_item_menu'
+    puts '6. add_author_to_item_menu'
+    puts '7. List all books'
+    puts '8. List all labels'
+    puts '9. Add a book'
+    puts '10. Quit'
   end
 
   def add_item
@@ -77,12 +96,28 @@ class ConsoleApp
     puts 'Label added to the item.'
   end
 
-  #   def add_author_to_item(author)
-  #     puts 'Enter author:'
-  #     author = gets.chomp
-  #     item.add_author(author)
-  #     puts 'author added to the item.'
-  #   end
+  def list_all_books
+    puts 'Listing all books:'
+    # Retrieve and display books from JSON file
+  end
+
+  def list_all_labels
+    puts 'Listing all labels:'
+    # Retrieve and display labels from JSON file
+  end
+
+  def add_book
+    puts 'Enter book title:'
+    title = gets.chomp
+    puts 'Enter published year:'
+    year = gets.chomp.to_i
+    puts 'Enter cover state (good/bad):'
+    cover_state = gets.chomp
+
+    book = Book.new(title, Time.new(year), cover_state)
+    @items << book
+    puts 'Book added.'
+  end
 
   def move_to_archive
     if @items.empty?
