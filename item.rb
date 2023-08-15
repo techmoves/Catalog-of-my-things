@@ -1,38 +1,30 @@
 class Item
-    attr_accessor :id, :publish_date, :archived
-  
-   # Constructor method
-    def initialize(publish_date, archived, id = Random.rand(1..1000)) 
-       @id = id
-       @publish_date = publish_date
-       @archived = archived
+    attr_reader :title, :published_date
+    attr_accessor :archived
+    def initialize(title, published_date)
+      @title = title
+      @published_date = published_date
+      @archived = false
+      @genres = []
+      @sources = []
+      @labels = []
     end
-  
-    #Setter methods
-    def genre = (value)
-        # instance variables
-      @genre = value
+    def add_genre(genre)
+      @genres << genre
     end
-  
-    def author = (value)
-      @author = value
+    def add_source(source)
+      @sources << source
     end
-  
-    def label = (value)
-      @label = value
+    def add_label(label)
+      @labels << label
     end
-  
-    def source = (value)
-      @source = value
+    def add_author(author)
+      @author << author
     end
-  
-    def move_to_archived?
+    def can_be_archived?
     end
-  
-    def can_be_archived
+
+    def move_to_archive
       end
-      
-    
-    private :id, :can_be_archived, :archived
-  
+    end
   end
