@@ -6,15 +6,11 @@ require_relative 'game_list'
 require_relative 'game'
 require_relative 'author_list'
 require_relative 'author'
-
-
 require_relative 'genre'
 require_relative 'music_album'
 
 
 # rubocop:disable Metrics/ClassLength
-# rubocop:disable Metrics/CyclomaticComplexity
-# rubocop:disable Metrics/MethodLength
 class ConsoleApp
   DATA_FOLDER = 'data/'.freeze # Define the data folder path
 
@@ -35,13 +31,8 @@ class ConsoleApp
   # rubocop:disable Metrics/CyclomaticComplexity
   # rubocop:disable Metrics/MethodLength
   def main_menu
-    puts 'Welcome to catalog of my Things!'
     @items = load_items_from_json || []
     @genres = load_genres_from_json || []
-    main_menu
-  end
-
-  def main_menu
     puts 'Welcome to the catalog of my Things!'
     # rubocop:disable Metrics/BlockLength
     loop do
@@ -61,7 +52,7 @@ class ConsoleApp
         add_label_to_item
       when 6
         @author_list.add_author_menu
-        
+
       when 7
         list_all_books
       when 8
@@ -74,12 +65,11 @@ class ConsoleApp
         @author_list.list_all_authors
       when 12
         @game_list.add_game_menu
-        list_all_music_albums
-      when 11
-        list_all_genres
-      when 12
-        add_music_album
       when 13
+        list_all_genres
+      when 14
+        add_music_album
+      when 15
         puts 'Goodbye!'
         save_data
         break
@@ -90,6 +80,7 @@ class ConsoleApp
     # rubocop:enable Metrics/BlockLength
     # rubocop:enable Metrics/MethodLength
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
 
   private
 
@@ -97,16 +88,6 @@ class ConsoleApp
     puts 'Select an option:'
     puts '1. Add Item'
     puts '2. Move Item to Archive'
-    puts '3. Add genre'
-    puts '4. add_source_to_item_menu'
-    puts '5. add_label_to_item_menu'
-    puts '6. add_author_to_item_menu'
-    puts '7. List all books'
-    puts '8. List all labels'
-    puts '9. Add a book'
-    puts '10. List all Games'
-    puts '11. List all Authors'
-    puts '12. Add a game'
     puts '3. Add Genre'
     puts '4. Add Source to Item'
     puts '5. Add Label to Item'
@@ -114,10 +95,12 @@ class ConsoleApp
     puts '7. List All Books'
     puts '8. List All Labels'
     puts '9. Add a Book'
-    puts '10. List All Music Albums'
-    puts '11. List All Genres'
-    puts '12. Add a Music Album'
-    puts '13. Quit'
+    puts '10. List All Games'
+    puts '11. List All Authors'
+    puts '12. Add a Game'
+    puts '13  list_all_genres'
+    puts '14  Add_music_album'
+    puts '15. Quit'
   end
 
   def add_item
@@ -267,8 +250,6 @@ class ConsoleApp
     json_data.map { |genre_data| Genre.from_hash(genre_data) }
   end
 
-  # rubocop:enable Metrics/MethodLength
-  # rubocop:enable Metrics/CyclomaticComplexity
   # rubocop:enable Metrics/ClassLength
 end
 
