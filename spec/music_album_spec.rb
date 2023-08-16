@@ -1,4 +1,4 @@
-require_relative '../music_album'
+# require_relative '../music_album'
 # require 'rspec'
 
 describe MusicAlbum do
