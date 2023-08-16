@@ -50,6 +50,7 @@ class ConsoleApp
       when 12
         add_music_album
       when 13
+        save_genres_to_json # Save genres before exiting
         puts 'Goodbye!'
         break
       else
@@ -94,11 +95,12 @@ class ConsoleApp
     name = gets.chomp
     puts 'Enter genre description:'
     description = gets.chomp
-
     genre = Genre.new(name, description)
     @genres << genre
+    save_genres_to_json # Add this line to save genres to JSON
     puts 'Genre added.'
   end
+  
 
   def list_all_music_albums
     puts 'Listing all music albums:'

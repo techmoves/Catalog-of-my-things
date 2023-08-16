@@ -7,6 +7,14 @@ class Genre
     @items = []
   end
 
+  def to_hash
+    {
+      'name' => @name,
+      'description' => @description,
+      'items' => @items.map(&:to_hash)
+    }
+  end
+
   def add_item(item)
     @items << item
     item.genre = self # Set the genre property of the item
