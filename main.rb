@@ -6,17 +6,16 @@ require_relative 'genre'
 require_relative 'music_album'
 
 # rubocop:disable Metrics/ClassLength
-# rubocop:disable Metrics/CyclomaticComplexity
-# rubocop:disable Metrics/MethodLength
 class ConsoleApp
-  DATA_FOLDER = 'data/'.freeze # Define the data folder path
-
   def initialize
-    @items = load_items_from_json || []
+    @items = load_music_albums_from_json || []
     @genres = load_genres_from_json || []
     main_menu
   end
 
+  # rubocop:enable Metrics/ClassLength
+
+  # rubocop:disable Metrics/MethodLength, Metrics/CyclomaticComplexity
   def main_menu
     puts 'Welcome to the catalog of my Things!'
     # rubocop:disable Metrics/BlockLength
@@ -50,6 +49,7 @@ class ConsoleApp
       when 12
         add_music_album
       when 13
+        save_genres_to_json # Save genres to JSON file
         puts 'Goodbye!'
         break
       else
@@ -58,6 +58,7 @@ class ConsoleApp
     end
     # rubocop:enable Metrics/BlockLength
   end
+  # rubocop:enable Metrics/MethodLength, Metrics/CyclomaticComplexity
 
   private
 
@@ -124,6 +125,7 @@ class ConsoleApp
 
     music_album = MusicAlbum.new(title, Time.new(year), artist)
     @items << music_album
+    save_music_albums_to_json # Save the updated collection
     puts 'Music album added.'
   end
 
@@ -155,10 +157,6 @@ class ConsoleApp
     end
   end
 
-  # def add_author_to_item
-  #   # Implement this method
-  # end
-
   def list_all_books
     puts 'Listing all books:'
     @items.each do |item|
@@ -170,8 +168,6 @@ class ConsoleApp
 
   def list_all_labels
     puts 'Listing all labels:'
-    # Retrieve and display labels from JSON file
-    # You need to implement this based on your data structure
   end
 
   def add_book
@@ -187,9 +183,11 @@ class ConsoleApp
     puts 'Book added.'
   end
 
-  def save_items_to_json
-    File.open('items.json', 'w') do |file|
-      json_data = @items.map(&:to_hash)
+  def save_music_albums_to_json
+    music_albums = @items.select { |item| item.is_a?(MusicAlbum) }
+
+    File.open('music_albums.json', 'w') do |file|
+      json_data = music_albums.map(&:to_hash)
       file.write(JSON.pretty_generate(json_data))
     end
   end
@@ -201,33 +199,20 @@ class ConsoleApp
     end
   end
 
-  def load_items_from_json
-    items_file_path = File.join(DATA_FOLDER, 'items.json')
-    return unless File.exist?(items_file_path)
-
-    json_data = JSON.parse(File.read(items_file_path))
-    json_data.map do |item_data|
-      case item_data['type']
-      when 'Book'
-        Book.from_hash(item_data)
-      when 'MusicAlbum'
-        MusicAlbum.from_hash(item_data)
-        # Add more cases for other types
-      end
-    end
-  end
-
   def load_genres_from_json
-    genres_file_path = File.join(DATA_FOLDER, 'genres.json')
+    genres_file_path = 'genres.json'
     return unless File.exist?(genres_file_path)
 
     json_data = JSON.parse(File.read(genres_file_path))
     json_data.map { |genre_data| Genre.from_hash(genre_data) }
   end
 
-  # rubocop:enable Metrics/MethodLength
-  # rubocop:enable Metrics/CyclomaticComplexity
-  # rubocop:enable Metrics/ClassLength
-end
+  def load_music_albums_from_json
+    music_albums_file_path = 'music_albums.json'
+    return [] unless File.exist?(music_albums_file_path)
 
+    json_data = JSON.parse(File.read(music_albums_file_path))
+    json_data.map { |album_data| MusicAlbum.from_hash(album_data) }
+  end
+end
 ConsoleApp.new

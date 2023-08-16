@@ -1,0 +1,23 @@
+[
+  {
+    "name": "comic",
+    "description": "cool",
+    "items": [
+
+    ]
+  },
+  {
+    "name": "romance",
+    "description": "love",
+    "items": [
+
+    ]
+  },
+  {
+    "name": "action",
+    "description": "fast and furious",
+    "items": [
+
+    ]
+  }
+]
