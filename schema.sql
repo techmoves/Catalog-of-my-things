@@ -1,17 +1,14 @@
 CREATE TABLE books (
-  id INTEGER PRIMARY KEY,
-  title VARCHAR(255),
-  author VARCHAR(255),
-  cover_state VARCHAR(255),
-  created_at TIMESTAMP,
-  updated_at TIMESTAMP
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  published_date DATE,
+  cover_state VARCHAR(50),
+  archived BOOLEAN
 );
 
 CREATE TABLE labels (
-  id INTEGER PRIMARY KEY,
-  name VARCHAR(255),
-  created_at TIMESTAMP,
-  updated_at TIMESTAMP
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE book_labels (
@@ -40,4 +37,15 @@ CREATE TABLE author (
   id INT PRIMARY KEY REFERENCES item(id),
   first_name VARCHAR(30) NOT NULL,
   last_name VARCHAR(30) NOT NULL
+CREATE TABLE music_albums (
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  published_date DATE,
+  on_spotify BOOLEAN,
+  archived BOOLEAN
+);
+
+CREATE TABLE genres (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL
 );
