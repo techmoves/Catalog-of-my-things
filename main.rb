@@ -1,18 +1,30 @@
 require_relative 'item'
 require_relative 'book'
 require_relative 'label'
+require_relative 'game_list'
+require_relative 'game'
+require_relative 'author_list'
+
 
 class ConsoleApp
   def initialize
     @items = []
+    @game_list = GameList.new
+    @author_list = AuthorList.new 
+    @game_list.obtain_games # Load game data from JSON file # Instantiate GameList class
     main_menu
+  end
+
+  def save_data
+    @game_list.save_games
+    @author_list.save_authors
   end
 
   # rubocop:disable Metrics/CyclomaticComplexity
   # rubocop:disable Metrics/MethodLength
   def main_menu
-    
     puts 'Welcome to catalog of my Things!'
+    # rubocop:disable Metrics/BlockLength
     loop do
       display_menu_options
 
@@ -38,12 +50,20 @@ class ConsoleApp
       when 9
         add_book
       when 10
+        @game_list.list_all_games
+      when 11
+        @author_list.list_all_authors
+      when 12
+        @game_list.add_game_menu
+      when 13
         puts 'Goodbye!'
+        save_data
         break
       else
         puts 'Invalid choice. Please select a valid option.'
       end
     end
+    # rubocop:enable Metrics/BlockLength
     # rubocop:enable Metrics/MethodLength
   end
   # rubocop:enable Metrics/CyclomaticComplexity
