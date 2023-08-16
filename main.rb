@@ -11,9 +11,9 @@ class ConsoleApp
   def initialize
     @items = []
     @game_list = GameList.new
-    @author_list = AuthorList.new 
-    @game_list.obtain_games  # Load game data from JSON file # Instantiate GameList class
-    @author_list.obtain_authors 
+    @author_list = AuthorList.new
+    @game_list.obtain_games # Load game data from JSON file # Instantiate GameList class
+    @author_list.obtain_authors
     main_menu
   end
 

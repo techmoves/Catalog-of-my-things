@@ -51,7 +51,7 @@ class GameList
         'id' => game.id
       }
     end
-  
+
     json_line = JSON.generate(line)
     File.write('games.json', json_line, mode: 'w')
   end
