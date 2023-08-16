@@ -1,3 +1,6 @@
+require_relative './game'
+require 'json'
+
 class GameList
     def initialize
       @games = []
