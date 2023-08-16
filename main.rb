@@ -4,6 +4,7 @@ require_relative 'label'
 require_relative 'game_list'
 require_relative 'game'
 require_relative 'author_list'
+require_relative 'author'
 
 
 class ConsoleApp
@@ -11,7 +12,8 @@ class ConsoleApp
     @items = []
     @game_list = GameList.new
     @author_list = AuthorList.new 
-    @game_list.obtain_games # Load game data from JSON file # Instantiate GameList class
+    @game_list.obtain_games  # Load game data from JSON file # Instantiate GameList class
+    @author_list.obtain_authors 
     main_menu
   end
 
@@ -42,7 +44,7 @@ class ConsoleApp
       when 5
         add_label_to_item_menu
       when 6
-        add_author_to_item_menu
+        @author_list.add_author_menu
       when 7
         list_all_books
       when 8
