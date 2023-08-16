@@ -1,4 +1,4 @@
-require_relative 'music_album'
+require_relative '../music_album'
 
 RSpec.describe MusicAlbum do
   let(:published_date) { Time.new(2000, 1, 1) }

@@ -1,6 +1,5 @@
-# spec/genre_spec.rb
-require_relative 'genre' # Adjust the path as needed
-require_relative 'item'
+
+require_relative '../genre' # Adjust the path as needed
 
 RSpec.describe Genre do
   describe '#initialize' do
