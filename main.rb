@@ -127,9 +127,6 @@ class ConsoleApp
     puts 'Music album added.'
   end
 
-  # Implement the missing methods
-
-
   def add_source_to_item
     puts 'Enter the index of the item:'
     index = gets.chomp.to_i
