@@ -11,6 +11,7 @@ class ConsoleApp
   # rubocop:disable Metrics/CyclomaticComplexity
   # rubocop:disable Metrics/MethodLength
   def main_menu
+    
     puts 'Welcome to catalog of my Things!'
     loop do
       display_menu_options
@@ -61,7 +62,10 @@ class ConsoleApp
     puts '7. List all books'
     puts '8. List all labels'
     puts '9. Add a book'
-    puts '10. Quit'
+    puts '10. List all Games'
+    puts '11. List all Authors'
+    puts '12. Add a game'
+    puts '13. Quit'
   end
 
   def add_item
