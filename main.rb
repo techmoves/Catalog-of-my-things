@@ -181,9 +181,7 @@ class ConsoleApp
   def list_all_books
     puts 'Listing all books:'
     @items.each do |item|
-      if item.is_a?(Book)
-        puts "Published Year: #{item.published_year}, Cover State: #{item.cover_state}"
-      end
+      puts "Published Year: #{item.published_year}, Cover State: #{item.cover_state}" if item.is_a?(Book)
     end
   end
 
