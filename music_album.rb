@@ -18,7 +18,6 @@ class MusicAlbum < Item
       'title' => @title,
       'published_date' => @published_date&.to_s, # Convert to string if not nil
       'artist' => @artist
-      # ... other attributes specific to MusicAlbum ...
     }
   end
 
@@ -26,7 +25,6 @@ class MusicAlbum < Item
     title = hash['title']
     artist = hash['artist']
     published_date = parse_published_date(hash['published_date'])
-
     MusicAlbum.new(title, published_date, artist)
   end
 
@@ -34,7 +32,6 @@ class MusicAlbum < Item
     return nil if date_str.nil?
 
     year, month, day = date_str.split('-').map(&:to_i)
-
     if valid_date_components?(year, month, day)
       Time.new(year, month, day)
     else
