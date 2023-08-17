@@ -6,6 +6,8 @@ class MusicAlbum < Item
   def initialize(title, published_date, artist)
     super(title, published_date)
     @artist = artist
+    @published_date = published_date
+    @title = title
     @tracks = []
     @on_spotify = false
   end
@@ -14,30 +16,35 @@ class MusicAlbum < Item
     {
       'type' => 'MusicAlbum',
       'title' => @title,
-      'published_date' => @published_date.to_s, # Convert the time to string
+      'published_date' => @published_date&.to_s, # Convert to string if not nil
       'artist' => @artist
-      # ... include other attributes specific to MusicAlbum ...
+      # ... other attributes specific to MusicAlbum ...
     }
   end
 
   def self.from_hash(hash)
     title = hash['title']
-    published_date_str = hash['published_date']
-    published_date = parse_published_date(published_date_str)
     artist = hash['artist']
-    # ... initialize other attributes based on hash ...
+    published_date = parse_published_date(hash['published_date'])
 
     MusicAlbum.new(title, published_date, artist)
   end
 
-  def self.parse_published_date(published_date_str)
-    date_parts = published_date_str.split
-    date = date_parts[0]
-    time = date_parts[1]
-    year, month, day = date.split('-')
-    hour, minute, second = time.split(':')
+  def self.parse_published_date(date_str)
+    return nil if date_str.nil?
 
-    Time.new(year.to_i, month.to_i, day.to_i, hour.to_i, minute.to_i, second.to_i)
+    year, month, day = date_str.split('-').map(&:to_i)
+
+    if valid_date_components?(year, month, day)
+      Time.new(year, month, day)
+    else
+      puts "Invalid date components: Year: #{year}, Month: #{month}, Day: #{day}"
+      nil
+    end
+  end
+
+  def self.valid_date_components?(year, month, day)
+    year.between?(1000, 9999) && month.between?(1, 12) && day.between?(1, 31)
   end
 
   def add_track(track)

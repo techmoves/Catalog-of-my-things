@@ -12,5 +12,4 @@ RSpec.describe Genre do
       expect(genre.description).to eq(description)
     end
   end
-
 end

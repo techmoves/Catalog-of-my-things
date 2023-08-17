@@ -19,5 +19,26 @@
     "items": [
 
     ]
+  },
+  {
+    "name": "comic",
+    "description": "cartoon",
+    "items": [
+
+    ]
+  },
+  {
+    "name": "commedy",
+    "description": "tom and Jerry",
+    "items": [
+
+    ]
+  },
+  {
+    "name": "series",
+    "description": "kings",
+    "items": [
+
+    ]
   }
 ]

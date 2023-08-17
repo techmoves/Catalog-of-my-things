@@ -12,23 +12,11 @@ require_relative 'music_album'
 # rubocop:disable Metrics/ClassLength
 class ConsoleApp
   def initialize
-
     @items = load_music_albums_from_json || []
     @genres = load_genres_from_json || []
     main_menu
   end
-
   # rubocop:enable Metrics/ClassLength
-
-  # rubocop:disable Metrics/MethodLength, Metrics/CyclomaticComplexity
-
-    @items = []
-    @game_list = GameList.new
-    @author_list = AuthorList.new
-    @game_list.obtain_games # Load game data from JSON file # Instantiate GameList class
-    @author_list.obtain_authors
-    main_menu
-  end
 
   def save_data
     @game_list.save_games
@@ -39,8 +27,6 @@ class ConsoleApp
   # rubocop:disable Metrics/MethodLength
 
   def main_menu
-    @items = load_items_from_json || []
-    @genres = load_genres_from_json || []
     puts 'Welcome to the catalog of my Things!'
     # rubocop:disable Metrics/BlockLength
     loop do
@@ -90,8 +76,6 @@ class ConsoleApp
     # rubocop:enable Metrics/BlockLength
     # rubocop:enable Metrics/MethodLength
   end
-  # rubocop:enable Metrics/MethodLength, Metrics/CyclomaticComplexity
-
   # rubocop:enable Metrics/CyclomaticComplexity
 
   private
@@ -246,9 +230,6 @@ class ConsoleApp
   def load_music_albums_from_json
     music_albums_file_path = 'music_albums.json'
     return [] unless File.exist?(music_albums_file_path)
-
-  # rubocop:enable Metrics/ClassLength
-end
 
     json_data = JSON.parse(File.read(music_albums_file_path))
     json_data.map { |album_data| MusicAlbum.from_hash(album_data) }
