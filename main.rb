@@ -15,6 +15,7 @@ class ConsoleApp
     @items = load_music_albums_from_json || []
     @genres = load_genres_from_json || []
     main_menu
+    @books = load_books_from_json || []
   end
   # rubocop:enable Metrics/ClassLength
 
@@ -181,7 +182,7 @@ class ConsoleApp
     puts 'Listing all books:'
     @items.each do |item|
       if item.is_a?(Book)
-        puts "Title: #{item.title}, Published Year: #{item.published_year}, Cover State: #{item.cover_state}"
+        puts "Published Year: #{item.published_year}, Cover State: #{item.cover_state}"
       end
     end
   end
@@ -197,7 +198,6 @@ class ConsoleApp
     year = gets.chomp.to_i
     puts 'Enter cover state (good/bad):'
     cover_state = gets.chomp
-
     book = Book.new(title, Time.new(year), cover_state)
     @items << book
     puts 'Book added.'

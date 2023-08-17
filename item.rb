@@ -18,8 +18,8 @@ class Item
     @sources << source
   end
 
-  def add_label(label)
-    @labels << label
+  def label=(label)
+    @label << label
   end
 
   def add_author(author)
