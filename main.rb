@@ -2,22 +2,36 @@ require 'json'
 require_relative 'item'
 require_relative 'book'
 require_relative 'label'
+require_relative 'game_list'
+require_relative 'game'
+require_relative 'author_list'
+require_relative 'author'
 require_relative 'genre'
 require_relative 'music_album'
 
 # rubocop:disable Metrics/ClassLength
-# rubocop:disable Metrics/CyclomaticComplexity
-# rubocop:disable Metrics/MethodLength
 class ConsoleApp
   DATA_FOLDER = 'data/'.freeze # Define the data folder path
 
   def initialize
-    @items = load_items_from_json || []
-    @genres = load_genres_from_json || []
+    @items = []
+    @game_list = GameList.new
+    @author_list = AuthorList.new
+    @game_list.obtain_games # Load game data from JSON file # Instantiate GameList class
+    @author_list.obtain_authors
     main_menu
   end
 
+  def save_data
+    @game_list.save_games
+    @author_list.save_authors
+  end
+
+  # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/MethodLength
   def main_menu
+    @items = load_items_from_json || []
+    @genres = load_genres_from_json || []
     puts 'Welcome to the catalog of my Things!'
     # rubocop:disable Metrics/BlockLength
     loop do
@@ -36,7 +50,8 @@ class ConsoleApp
       when 5
         add_label_to_item
       when 6
-        add_author_to_item
+        @author_list.add_author_menu
+
       when 7
         list_all_books
       when 8
@@ -44,20 +59,27 @@ class ConsoleApp
       when 9
         add_book
       when 10
-        list_all_music_albums
+        @game_list.list_all_games
       when 11
-        list_all_genres
+        @author_list.list_all_authors
       when 12
-        add_music_album
+        @game_list.add_game_menu
       when 13
+        list_all_genres
+      when 14
+        add_music_album
+      when 15
         puts 'Goodbye!'
+        save_data
         break
       else
         puts 'Invalid choice. Please select a valid option.'
       end
     end
     # rubocop:enable Metrics/BlockLength
+    # rubocop:enable Metrics/MethodLength
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
 
   private
 
@@ -72,10 +94,12 @@ class ConsoleApp
     puts '7. List All Books'
     puts '8. List All Labels'
     puts '9. Add a Book'
-    puts '10. List All Music Albums'
-    puts '11. List All Genres'
-    puts '12. Add a Music Album'
-    puts '13. Quit'
+    puts '10. List All Games'
+    puts '11. List All Authors'
+    puts '12. Add a Game'
+    puts '13  list_all_genres'
+    puts '14  Add_music_album'
+    puts '15. Quit'
   end
 
   def add_item
@@ -225,8 +249,6 @@ class ConsoleApp
     json_data.map { |genre_data| Genre.from_hash(genre_data) }
   end
 
-  # rubocop:enable Metrics/MethodLength
-  # rubocop:enable Metrics/CyclomaticComplexity
   # rubocop:enable Metrics/ClassLength
 end
 

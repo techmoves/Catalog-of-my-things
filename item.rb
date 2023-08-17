@@ -1,14 +1,13 @@
-class Item
-  attr_reader :title, :published_date
-  attr_accessor :archived, :label
+require_relative 'years_difference'
 
-  def initialize(title, published_date)
-    @title = title
-    @published_date = published_date
-    @archived = false
-    @genres = []
-    @sources = []
-    @labels = []
+class Item
+  include YearsDifference
+  attr_accessor :publish_date, :archived
+
+  def initialize(publish_date, archived, id = Time.now.to_f.to_s)
+    @id = id
+    @publish_date = publish_date
+    @archived = archived
   end
 
   def add_genre(genre)
