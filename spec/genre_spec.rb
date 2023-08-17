@@ -13,5 +13,4 @@ RSpec.describe Genre do
     end
   end
 
-  # You can add more tests as needed
 end
