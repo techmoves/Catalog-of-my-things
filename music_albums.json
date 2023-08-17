@@ -1,0 +1,56 @@
+[
+  {
+    "type": "MusicAlbum",
+    "title": null,
+    "published_date": null,
+    "artist": "rewe"
+  },
+  {
+    "type": "MusicAlbum",
+    "title": null,
+    "published_date": null,
+    "artist": "minister"
+  },
+  {
+    "type": "MusicAlbum",
+    "title": null,
+    "published_date": null,
+    "artist": "alex"
+  },
+  {
+    "type": "MusicAlbum",
+    "title": null,
+    "published_date": null,
+    "artist": "artist"
+  },
+  {
+    "type": "MusicAlbum",
+    "title": null,
+    "published_date": null,
+    "artist": "arat"
+  },
+  {
+    "type": "MusicAlbum",
+    "title": null,
+    "published_date": null,
+    "artist": "aser"
+  },
+  {
+    "type": "MusicAlbum",
+    "title": null,
+    "published_date": null,
+    "artist": "aertt"
+  },
+  {
+    "type": "MusicAlbum",
+    "title": null,
+    "published_date": null,
+    "artist": "art"
+  },
+  {
+    "type": "MusicAlbum",
+    "title": "title",
+    "published_date": "2020-01-01 00:00:00 +0300",
+    "artist": "artist"
+  }
+]
