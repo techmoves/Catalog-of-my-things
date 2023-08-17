@@ -9,7 +9,6 @@ require_relative 'author'
 require_relative 'genre'
 require_relative 'music_album'
 
-
 # rubocop:disable Metrics/ClassLength
 class ConsoleApp
   DATA_FOLDER = 'data/'.freeze # Define the data folder path
