@@ -13,6 +13,6 @@ class Book < Item
   end
 
   def add_label(_label)
-    @label = label8
+    @label = label
   end
 end

@@ -18,9 +18,7 @@ class Item
     @sources << source
   end
 
-  def label=(label)
-    @label << label
-  end
+  attr_writer :label
 
   def add_author(author)
     @author << author
