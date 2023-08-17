@@ -1,4 +1,3 @@
-
 require_relative '../genre' # Adjust the path as needed
 
 RSpec.describe Genre do
