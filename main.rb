@@ -214,7 +214,7 @@ class ConsoleApp
     label_name = gets.chomp
 
     label = Label.new(label_name)
-    label.add_item(book) # Associate the book with the label
+    label.add_item(book) 
 
     @items << book
     save_books_to_json
