@@ -14,6 +14,10 @@ class ConsoleApp
   def initialize
     @items = load_music_albums_from_json || []
     @genres = load_genres_from_json || []
+    @game_list = GameList.new
+    @author_list = AuthorList.new
+    @game_list.obtain_games # Load game data from JSON file # Instantiate GameList class
+    @author_list.obtain_authors
     main_menu
     @books = load_books_from_json || []
   end
