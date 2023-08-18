@@ -1,14 +1,8 @@
 [
   {
-    "title": "toto",
-    "author": "frees",
-    "published_date": "2020-01-01 00:00:00 +0300",
-    "cover_state": "good"
-  },
-  {
-    "title": "kings",
-    "author": "meryann",
-    "published_date": "2020-01-01 00:00:00 +0300",
-    "cover_state": "good"
+    "title": "muh",
+    "author": "ytg",
+    "published_date": null,
+    "cover_state": "bad"
   }
 ]

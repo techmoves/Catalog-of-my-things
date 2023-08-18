@@ -8,7 +8,6 @@ require_relative 'author_list'
 require_relative 'author'
 require_relative 'genre'
 require_relative 'music_album'
-
 # rubocop:disable Metrics/ClassLength
 class ConsoleApp
   def initialize
@@ -23,8 +22,8 @@ class ConsoleApp
     main_menu
     @books = load_books_from_json || []
   end
-  # rubocop:enable Metrics/ClassLength
 
+  # rubocop:enable Metrics/ClassLength
   def save_data
     @game_list.save_games
     @author_list.save_authors
@@ -32,14 +31,12 @@ class ConsoleApp
 
   # rubocop:disable Metrics/CyclomaticComplexity
   # rubocop:disable Metrics/MethodLength
-
   def main_menu
     puts 'Welcome to the catalog of my Things!'
     # rubocop:disable Metrics/BlockLength
     loop do
       display_menu_options
       choice = gets.chomp.to_i
-
       case choice
       when 1
         add_item
@@ -53,7 +50,6 @@ class ConsoleApp
         add_label_to_item
       when 6
         @author_list.add_author_menu
-
       when 7
         @items = load_books_from_json
         list_books
@@ -69,7 +65,6 @@ class ConsoleApp
         @game_list.add_game_menu
       when 13
         save_genres_to_json # Save genres to JSON file
-
         list_all_genres
       when 14
         add_music_album
@@ -116,7 +111,6 @@ class ConsoleApp
     title = gets.chomp
     puts 'Enter published year:'
     year = gets.chomp.to_i
-
     item = Item.new(title, Time.new(year))
     @items << item
     puts 'Item added.'
@@ -127,7 +121,6 @@ class ConsoleApp
     name = gets.chomp
     puts 'Enter genre description:'
     description = gets.chomp
-
     genre = Genre.new(name, description)
     @genres << genre
     puts 'Genre added.'
@@ -154,7 +147,6 @@ class ConsoleApp
     year = gets.chomp.to_i
     puts 'Enter artist:'
     artist = gets.chomp
-
     music_album = MusicAlbum.new(title, Time.new(year), artist)
     @items << music_album
     save_music_albums_to_json # Save the updated collection
@@ -182,7 +174,7 @@ class ConsoleApp
       item = @items[index - 1]
       puts 'Enter label:'
       label = gets.chomp
-      item.add_label(label)
+      item.add_label(label) # Remove the argument from this line
       puts 'Label added to the item.'
     else
       puts 'Invalid index. Please select a valid item.'
@@ -197,7 +189,6 @@ class ConsoleApp
       puts "Title: #{item.title}, Author: #{item.author},
       Published Year: #{item.published_date},
       Cover State: #{item.cover_state}"
-      puts "Published Year: #{item.published_year}, Cover State: #{item.cover_state}" if item.is_a?(Book)
     end
   end
 
@@ -214,22 +205,15 @@ class ConsoleApp
     year = gets.chomp.to_i
     puts 'Enter cover state (good/bad):'
     cover_state = gets.chomp
-    published_date = Time.new(year)
-    book = Book.new(title, author, published_date, cover_state)
-    puts 'Enter label for the book:'
-    label_name = gets.chomp
-
-    label = Label.new(label_name)
-    label.add_item(book)
-    book = Book.new(title, Time.new(year), cover_state)
-    @items << book
+    book = Book.new(title, author, year, cover_state)
+    @books << book
     save_books_to_json
     puts 'Book added.'
   end
 
   def save_books_to_json
     File.open('books.json', 'w') do |file|
-      json_data = @items.select { |item| item.is_a?(Book) }.map(&:to_hash)
+      json_data = @books.select { |item| item.is_a?(Book) }.map(&:to_hash)
       file.write(JSON.pretty_generate(json_data))
     end
     puts 'Books saved to JSON file.'
@@ -251,7 +235,6 @@ class ConsoleApp
 
   def save_music_albums_to_json
     music_albums = @items.select { |item| item.is_a?(MusicAlbum) }
-
     File.open('music_albums.json', 'w') do |file|
       json_data = music_albums.map(&:to_hash)
       file.write(JSON.pretty_generate(json_data))
