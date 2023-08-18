@@ -69,6 +69,9 @@ class ConsoleApp
       when 14
         add_music_album
       when 15
+        @items = load_music_albums_from_json
+        list_all_music_albums
+      when 16
         puts 'Goodbye!'
         save_data
         break
@@ -99,7 +102,8 @@ class ConsoleApp
     puts '12. Add a Game'
     puts '13  list_all_genres'
     puts '14  Add_music_album'
-    puts '15. Quit'
+    puts '15  list_music_album'
+    puts '16. Quit'
   end
 
   def add_item

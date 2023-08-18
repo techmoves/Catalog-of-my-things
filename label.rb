@@ -1,7 +1,8 @@
-class Label
+class Label < Item
   attr_accessor :name, :items
 
   def initialize(name)
+    super()
     @name = name
     @items = []
   end
@@ -12,16 +13,3 @@ class Label
   end
 end
 
-class Item
-  attr_accessor :title, :published_date, :labels
-
-  def initialize(title, published_date)
-    @title = title
-    @published_date = published_date
-    @labels = []
-  end
-
-  def add_label(label)
-    @labels << label
-  end
-end

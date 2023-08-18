@@ -29,7 +29,8 @@ class Item
   def to_hash
     {
       title: @title,
-      published_date: @published_date
+      published_date: @published_date,
+      archived: @archived # Include the 'archived' attribute
     }
   end
 
