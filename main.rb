@@ -16,7 +16,12 @@ class ConsoleApp
     @genres = load_genres_from_json || []
     # @book = load_books_from_json || []
     # @book = load_books_from_json || []
+    @game_list = GameList.new
+    @author_list = AuthorList.new
+    @game_list.obtain_games # Load game data from JSON file # Instantiate GameList class
+    @author_list.obtain_authors
     main_menu
+    @books = load_books_from_json || []
   end
   # rubocop:enable Metrics/ClassLength
 
@@ -192,6 +197,7 @@ class ConsoleApp
       puts "Title: #{item.title}, Author: #{item.author},
       Published Year: #{item.published_date},
       Cover State: #{item.cover_state}"
+      puts "Published Year: #{item.published_year}, Cover State: #{item.cover_state}" if item.is_a?(Book)
     end
   end
 
@@ -215,7 +221,7 @@ class ConsoleApp
 
     label = Label.new(label_name)
     label.add_item(book) 
-
+    book = Book.new(title, Time.new(year), cover_state)
     @items << book
     save_books_to_json
     puts 'Book added.'

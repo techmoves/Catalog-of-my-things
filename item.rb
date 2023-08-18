@@ -18,12 +18,12 @@ class Item
     @sources << source
   end
 
-  def add_label(label)
-    @labels << label
-  end
+  attr_writer :label
 
   def add_author(author)
-    @author << author
+    # @author << author
+    @author = author
+    author.items.push(self) unless author.items.include? self
   end
 
   def to_hash
@@ -35,8 +35,9 @@ class Item
   end
 
   def can_be_archived?
-    years_since_publication = Time.now.year - @published_date.year
-    years_since_publication >= 10
+    # years_since_publication = Time.now.year - @published_date.year
+    # years_since_publication >= 10
+    true if years_to_today(@publish_date) > 10
   end
 
   def move_to_archive
