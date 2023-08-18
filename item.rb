@@ -26,6 +26,13 @@ class Item
     @author << author
   end
 
+  def to_hash
+    {
+      title: @title,
+      published_date: @published_date
+    }
+  end
+
   def can_be_archived?
     years_since_publication = Time.now.year - @published_date.year
     years_since_publication >= 10

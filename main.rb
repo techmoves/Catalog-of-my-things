@@ -14,6 +14,8 @@ class ConsoleApp
   def initialize
     @items = load_music_albums_from_json || []
     @genres = load_genres_from_json || []
+    # @book = load_books_from_json || []
+    # @book = load_books_from_json || []
     main_menu
   end
   # rubocop:enable Metrics/ClassLength
@@ -48,7 +50,8 @@ class ConsoleApp
         @author_list.add_author_menu
 
       when 7
-        list_all_books
+        @items = load_books_from_json
+        list_books
       when 8
         list_all_labels
       when 9
@@ -177,12 +180,14 @@ class ConsoleApp
     end
   end
 
-  def list_all_books
+  def list_books
     puts 'Listing all books:'
     @items.each do |item|
-      if item.is_a?(Book)
-        puts "Title: #{item.title}, Published Year: #{item.published_year}, Cover State: #{item.cover_state}"
-      end
+      next unless item.is_a?(Book)
+
+      puts "Title: #{item.title}, Author: #{item.author},
+      Published Year: #{item.published_date},
+      Cover State: #{item.cover_state}"
     end
   end
 
@@ -193,14 +198,45 @@ class ConsoleApp
   def add_book
     puts 'Enter book title:'
     title = gets.chomp
+    puts 'Enter author:'
+    author = gets.chomp
     puts 'Enter published year:'
     year = gets.chomp.to_i
     puts 'Enter cover state (good/bad):'
     cover_state = gets.chomp
+    published_date = Time.new(year)
+    book = Book.new(title, author, published_date, cover_state)
+    puts 'Enter label for the book:'
+    label_name = gets.chomp
 
-    book = Book.new(title, Time.new(year), cover_state)
+    label = Label.new(label_name)
+    label.add_item(book) # Associate the book with the label
+
     @items << book
+    save_books_to_json
     puts 'Book added.'
+  end
+
+  def save_books_to_json
+    File.open('books.json', 'w') do |file|
+      json_data = @items.select { |item| item.is_a?(Book) }.map(&:to_hash)
+      file.write(JSON.pretty_generate(json_data))
+    end
+    puts 'Books saved to JSON file.'
+  end
+
+  def load_books_from_json
+    return [] unless File.exist?('books.json')
+
+    json_data = JSON.parse(File.read('books.json'))
+    json_data.map do |book_data|
+      Book.new(
+        book_data['title'],
+        book_data['author'],
+        book_data['published_date'], # Parse the date string
+        book_data['cover_state']
+      )
+    end
   end
 
   def save_music_albums_to_json
