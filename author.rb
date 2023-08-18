@@ -11,9 +11,9 @@ class Author
   end
 
   def add_item(item)
-    if item.is_a?(Item) && !@items.include?(item)
-      @items << item
-      item.add_author(self)
-    end
+    return unless item.is_a?(Item) && !@items.include?(item)
+
+    @items << item
+    item.add_author(self)
   end
 end
