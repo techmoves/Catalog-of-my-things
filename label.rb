@@ -1,17 +1,15 @@
-class Book < Item
-  attr_accessor :cover_state
+class Label
+  attr_accessor :items, :color, :title, :id
 
-  def initialize(title, published_date, cover_state)
-    super(title, published_date)
-    @cover_state = cover_state
+  def initialize(color, title, id = nil)
+    @id = id || Random.rand(1..1000)
+    @title = title
+    @color = color
+    @items = []
   end
 
   def add_item(item)
     @items << item
-    item.labels << self
-  end
-
-  def can_be_archived?
-    super || @cover_state == 'bad'
+    # No need to set item.label here
   end
 end

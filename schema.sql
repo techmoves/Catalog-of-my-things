@@ -1,6 +1,6 @@
 CREATE TABLE books (
   id SERIAL PRIMARY KEY,
-  title VARCHAR(255) NOT NULL,
+  publisher VARCHAR(255) NOT NULL,
   published_date DATE,
   cover_state VARCHAR(50),
   archived BOOLEAN
@@ -9,6 +9,9 @@ CREATE TABLE books (
 CREATE TABLE labels (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255) NOT NULL
+  title VARCHAR(255) NOT NULL,
+  color VARCHAR(255) NOT NULL,
+  items VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE book_labels (
