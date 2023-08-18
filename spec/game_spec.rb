@@ -1,4 +1,4 @@
-require_relative 'game'
+require_relative '../game'
 
 describe Game do
   game = Game.new(true, Time.new(2005, 1, 1), Time.new(1999, 3, 23), true)

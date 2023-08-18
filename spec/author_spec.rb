@@ -1,5 +1,5 @@
-require_relative 'author'
-require_relative 'item'
+require_relative '../author'
+require_relative '../item'
 
 describe Author do
   author = Author.new('Abdelaziz', 'Soliman')
