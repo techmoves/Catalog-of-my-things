@@ -1,5 +1,5 @@
 # spec/label_spec.rb
-require_relative '../label'  # Adjust the path as needed
+require_relative '../label' # Adjust the path as needed
 
 RSpec.describe Label do
   let(:label_title) { 'Test Label' }
@@ -16,5 +16,4 @@ RSpec.describe Label do
       expect(label.instance_variable_get(:@id)).not_to be_nil
     end
   end
-
 end
