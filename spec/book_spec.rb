@@ -2,7 +2,6 @@ require_relative '../item'
 require_relative '../book'
 require_relative '../years_difference'
 
-
 class Book < Item
   attr_accessor :publisher, :cover_state
 
