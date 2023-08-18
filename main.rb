@@ -220,7 +220,7 @@ class ConsoleApp
     label_name = gets.chomp
 
     label = Label.new(label_name)
-    label.add_item(book) 
+    label.add_item(book)
     book = Book.new(title, Time.new(year), cover_state)
     @items << book
     save_books_to_json

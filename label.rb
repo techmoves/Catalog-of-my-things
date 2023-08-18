@@ -7,12 +7,11 @@ class Label
     @color = color
     @items = []
   end
-  
-   attr_reader :items
+
+  attr_reader :items
 
   def add_item(item)
     @items.push(item)
     item.label = self
   end
 end
-
