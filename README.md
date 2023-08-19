@@ -29,9 +29,16 @@
 
 ### Key Features <a name="key-features"></a>
 
-- ** coming soon**
-- **coming soon **
-- **coming soon **
+- **Item class **
+- **Book class **
+- **MusicAlbum class **
+- **Game class **
+
+
+### PRESANTATION
+
+- LINK:
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 💻 Getting Started <a name="getting-started"></a>
@@ -42,8 +49,9 @@ To get a local copy up and running follow these simple example steps.
 
 you have to install those in your local machine.
 
-- [ ] Ruby.
-- [ ] A Text Editor.
+- [x] Ruby.
+- [x] A Text Editor.
+- [x] PostgreSQL.
 
 ### Setup
 
@@ -57,9 +65,24 @@ Go to the project directory.
 
 ```bash
   cd main
+  bundle install
 ```
 
+### Run tests
+
+To run tests, run the following command:
+
+  rspec spec/
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+ ### Future Features
+
+   - [x]  Implemented frontend UI for navigation
+   - [x]  Include detailed functionalities, for instance movies
+   - [x]  Implement base URL for backend purposes
+
 
 ## 👤 Authors <a name="author"></a>
 
@@ -102,6 +125,6 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](./MIT.md) licensed.
+This project is [MIT](./LICENSE) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
