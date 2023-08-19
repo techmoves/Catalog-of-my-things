@@ -58,5 +58,17 @@
     "title": "song",
     "published_date": "2020-01-01 00:00:00 +0300",
     "artist": "glo"
+  },
+  {
+    "type": "MusicAlbum",
+    "title": "Musicssssssss",
+    "published_date": "9999-01-01 00:00:00 +0300",
+    "artist": "Me"
+  },
+  {
+    "type": "MusicAlbum",
+    "title": "GreatSongs",
+    "published_date": "2023-01-01 00:00:00 +0300",
+    "artist": "Me"
   }
 ]
