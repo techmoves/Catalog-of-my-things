@@ -11,7 +11,6 @@ require_relative 'author'
 require_relative 'genre'
 require_relative 'music_album'
 require_relative 'methods'
-require_relative 'main_menu'
 
 class ConsoleApp
   def initialize
