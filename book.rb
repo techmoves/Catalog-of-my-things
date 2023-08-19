@@ -1,18 +1,16 @@
 require_relative 'item'
-
 class Book < Item
-  attr_accessor :cover_state, :author, :labels, :published_year
+  attr_accessor :publisher, :cover_state
 
-  def initialize(can_be_archived, published_year, cover_state)
-    super(can_be_archived, published_year)
+  def initialize(publish_date, archived, publisher, cover_state, id = Time.now.to_f.to_s)
+    super(publish_date, archived, id)
+    @publisher = publisher
     @cover_state = cover_state
   end
 
   def can_be_archived?
-    super || @cover_state == 'bad'
-  end
+    return true if super == true || @cover_state == 'bad'
 
-  def add_label(_label)
-    @label = label
+    false
   end
 end

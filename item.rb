@@ -26,6 +26,14 @@ class Item
     author.items.push(self) unless author.items.include? self
   end
 
+  def to_hash
+    {
+      title: @title,
+      published_date: @published_date,
+      archived: @archived # Include the 'archived' attribute
+    }
+  end
+
   def can_be_archived?
     # years_since_publication = Time.now.year - @published_date.year
     # years_since_publication >= 10
