@@ -17,8 +17,7 @@
 
 # 🎯 Catalog of my things <a name="about-project"></a>
 
-"Catalog of my things" should be a simple console app that allows users to manage collections of the things they own.
-
+This is a ruby program executed in CLI that allows users the options to add books and labels, music albums and their genre, and also a game and with the authors. It also gives the user flexibility to display all the details of the book, game and music album.
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
