@@ -103,22 +103,27 @@ To run tests, run the following command:
 - Twitter: [@Abdelaz21958317](https://twitter.com/Abdelaz21958317)
 - LinkedIn: [Abdelaziz Soliman](https://www.linkedin.com/in/abdelazizsoliman/)
 
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ## 🤝 Contributing <a name="contributing"></a>
 
 Contributions, issues, and feature requests are welcome!
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## 👋 Show your support <a name="support"></a>
-
-Give a ⭐️ if you like this project!
+Feel free to check the [issues page](https://github.com/techmoves/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## 🔭Acknowledgments <a name="acknowledgements"></a>
+<!-- SUPPORT -->
+
+## ⭐️ Show your support <a name="support"></a>
+
+If you like this project please give it a ⭐️. Your support is greatly appreciated! ❤️
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- ACKNOWLEDGEMENTS -->
+
+## 🙏 Acknowledgments <a name="acknowledgements"></a>
+
+I would like to thank Microverse for giving us this opportunity to build this amazing project. I would also like to thank my peers for their support and encouragement throughout this project. I would also like to thank my mentors for their guidance and support. Lastly, I would like to thank the open-source community for their contribution to the open-source ecosystem. Without their contribution, creating this project would not have been possible. Thank you all. 🙏
 
 - [Microverse](https://www.microverse.org/).
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
