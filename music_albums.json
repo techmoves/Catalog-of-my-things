@@ -50,55 +50,55 @@
   {
     "type": "MusicAlbum",
     "title": "title",
-    "published_date": "2020-01-01 00:00:00 +0300",
+    "published_date": "2020-01-01 00:00:00 +0200",
     "artist": "artist"
   },
   {
     "type": "MusicAlbum",
     "title": "song",
-    "published_date": "2020-01-01 00:00:00 +0300",
+    "published_date": "2020-01-01 00:00:00 +0200",
     "artist": "glo"
   },
   {
     "type": "MusicAlbum",
     "title": "Musicssssssss",
-    "published_date": "9999-01-01 00:00:00 +0300",
+    "published_date": "9999-01-01 00:00:00 +0200",
     "artist": "Me"
   },
   {
     "type": "MusicAlbum",
     "title": "GreatSongs",
-    "published_date": "2023-01-01 00:00:00 +0300",
+    "published_date": "2023-01-01 00:00:00 +0200",
     "artist": "Me"
   },
   {
     "type": "MusicAlbum",
     "title": "anything",
-    "published_date": "9999-01-01 00:00:00 +0300",
+    "published_date": "9999-01-01 00:00:00 +0200",
     "artist": "he"
   },
   {
     "type": "MusicAlbum",
     "title": "titlt55",
-    "published_date": "9999-01-01 00:00:00 +0300",
+    "published_date": "9999-01-01 00:00:00 +0200",
     "artist": "me"
   },
   {
     "type": "MusicAlbum",
     "title": "ttttttttttttttt",
-    "published_date": "9999-01-01 00:00:00 +0300",
+    "published_date": "9999-01-01 00:00:00 +0200",
     "artist": "rtrtryyyyyyyyy"
   },
   {
     "type": "MusicAlbum",
     "title": "GreatSongd",
-    "published_date": "2000-01-01 00:00:00 +0300",
+    "published_date": "2000-01-01 00:00:00 +0200",
     "artist": "Alex"
   },
   {
     "type": "MusicAlbum",
     "title": "Songssssssssssssss",
-    "published_date": "2008-01-01 00:00:00 +0300",
+    "published_date": "2008-01-01 00:00:00 +0200",
     "artist": "LAni"
   }
 ]
