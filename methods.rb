@@ -48,7 +48,6 @@ def add_music_album
   artist = gets.chomp
   music_album = MusicAlbum.new(title, Time.new(year), artist)
   @items << music_album
-  save_music_albums_to_json
   puts 'Music album added.'
 end
 

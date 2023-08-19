@@ -33,29 +33,59 @@ class ConsoleApp
     @author_list.save_authors
     @book_list.save_books
     @label_list.save_labels
+    save_genres_to_json
+    save_music_albums_to_json
+  end
+
+  def menu_options
+    {
+      1 => { text: 'List All Books', action: -> { @book_list.list_all_books } },
+      2 => { text: 'List Music Albums', action: -> { list_all_music_albums } },
+      3 => { text: 'List All Games', action: -> { @game_list.list_all_games } },
+      4 => { text: 'List All Genres', action: -> { list_all_genres } },
+      5 => { text: 'List All Labels', action: -> { @label_list.list_all_labels } },
+      6 => { text: 'List All Authors', action: -> { @author_list.list_all_authors } },
+      7 => { text: 'Add a Book', action: -> { @book_list.add_book } },
+      8 => { text: 'Add Music Album', action: -> { add_music_album } },
+      9 => { text: 'Add a Game', action: -> { @game_list.add_game_menu } },
+      10 => { text: 'Add Genre', action: -> { add_genre } },
+      11 => { text: 'Add Label to Item', action: -> { @label_list.add_label_menu } },
+      12 => { text: 'Add Author to Item', action: -> { @author_list.add_author_menu } },
+      0 => { text: 'Quit', action: lambda {
+                                     puts 'Goodbye!'
+                                     save_data
+                                     exit
+                                   } }
+    }
   end
 
   def main_menu
-    main
+    menu_options
+
+    puts 'Welcome to the catalog of my Things!'
+    loop do
+      display_menu_options(menu_options)
+      choice = gets.chomp.to_i
+      menu_item = menu_options[choice]
+
+      if menu_item
+        menu_item[:action].call
+      else
+        puts 'Invalid choice. Please select a valid option.'
+      end
+    end
   end
 
   private
 
-  def display_menu_options
+  def display_menu_options(menu_options)
     puts 'Select an option:'
-    puts '1. List All Books'
-    puts '2. list_music_album'
-    puts '3. List All Games'
-    puts '4. list_all_genres'
-    puts '5. List All Labels'
-    puts '6. List All Authors'
-    puts '7. Add a Book'
-    puts '8. Add_music_album'
-    puts '9. Add a Game'
-    puts '10. Add Genre'
-    puts '11. Add Label to Item'
-    puts '12. Add Author to Item'
-    puts '0. Quit'
+    menu_options.each do |key, value|
+      puts "#{key}. #{value[:text]}"
+    end
   end
+
+  # ... (your existing methods)
 end
-ConsoleApp.new
+
+ConsoleApp.new.main_menu
